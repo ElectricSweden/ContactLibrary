@@ -8,6 +8,12 @@ import java.io.FileReader
 
 fun main(args: Array<String>)
 {
+    val fileName = "contactsKotlin.txt"
+
+    val file = File(fileName)
+
+    file.createNewFile()
+
     println("Welcome to the Contact List")
     while (true)
     {
@@ -144,7 +150,7 @@ fun writeToFile()
 {
     getReadFromFile()
 
-    File("C:\\Users\\tbinf\\TextfilerProgramming\\contactsKotlin.txt").printWriter().use { out ->
+    File("./contactsKotlin.txt").printWriter().use { out ->
         contacts.forEach {
             out.println("${it.name}, ${it.lastname}, ${it.phoneNumber}, ${it.email}")
         }
@@ -155,14 +161,14 @@ fun writeToFile()
 
 fun readFromFile() //Fix this
 {
-    File("C:\\Users\\tbinf\\TextfilerProgramming\\contactsKotlin.txt").forEachLine {
+    File("./contactsKotlin.txt").forEachLine {
         println(it)
     }
 }
 
 fun getReadFromFile()
 {
-    File("C:\\Users\\tbinf\\TextfilerProgramming\\contactsKotlin.txt").forEachLine {
+    File("./contactsKotlin.txt").forEachLine {
         val contactVariables = it.split(",").toTypedArray()
         addContact(contactVariables[0], contactVariables[1], contactVariables[2], contactVariables[3])
     }
